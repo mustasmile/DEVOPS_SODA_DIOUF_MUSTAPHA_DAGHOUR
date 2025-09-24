@@ -1,0 +1,11 @@
+variable "my_list" {
+  type = list(string)
+  default = ["one", "two", "to_delete", "three", "four"]
+  #default = ["one", "two", "three", "four"]
+}
+
+
+resource "terraform_data" "my_for_each" {
+  for_each = toset(var.my_list)
+  input = "tf_data-${each.value}"
+}
