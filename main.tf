@@ -40,7 +40,7 @@ data "local_file" "pet_file" {
     filename = "./dist/pet.txt"
     lifecycle {
         postcondition {
-            condition = .content == random_pet.pet.content
+            condition = self.content == random_pet.pet.content
             error_message = "Le fichier ne contient pas le bon nom de pet généré."
         }
     }
